@@ -207,7 +207,7 @@ const files = [
 // This defines which file belongs to which console without needing prefixes
 const fileCategories = {
     'NES': ['rsSMB1', 'rsSMB2Japan', 'rsSMB3'],
-    'SNES': [],
+    'SMC': [],
     'GBC': [],
     'GBA': [],
     'NGB': [],
@@ -215,11 +215,29 @@ const fileCategories = {
     'NDS': [],
     'SMS': [],
     'SGG': [],
-    'SMD': [],
+    'MD': [],
     'S32X': [],
     'SS': [],
     'SCD': [],
     // Add other games to their respective console lists here
+
+    // Map console internal name → display name
+const consoleDisplayNames = {
+    'NES': 'NES',
+    'SMC': 'SNES',
+    'GBC': 'GBC',
+    'GBA': 'GBA',
+    'NGB': 'NGB',
+    'N64': 'N64',
+    'NDS': 'NDS',
+    'SMS': 'SMS',
+    'SGG': 'SGG',
+    'MD': 'SMD',
+    'S32X': 'S32X',
+    'SS': 'SS',
+    'SCD': 'SCD',
+};
+
 };
 
 function generateAllSections() {
@@ -234,7 +252,7 @@ function generateAllSections() {
         
         const header = document.createElement('div');
         header.className = 'letter-header';
-        header.textContent = consoleName;
+        header.textContent = consoleDisplayNames[consoleName];
         section.appendChild(header);
 
         const buttonsContainer = document.createElement('div');
@@ -287,7 +305,7 @@ function generateSidebar(allConsoles) {
     allConsoles.forEach(consoleName => {
         const btn = document.createElement('button');
         btn.className = 'sidebar-btn';
-        btn.textContent = consoleName;
+        btn.textContent = consoleDisplayNames[consoleName];
         btn.onclick = () => {
             const section = document.getElementById(`section-${consoleName}`);
             if (section) section.scrollIntoView({ behavior: 'smooth' });
