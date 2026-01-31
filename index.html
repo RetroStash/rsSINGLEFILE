@@ -270,14 +270,19 @@ function generateAllSections() {
                     const ext = consoleName.toLowerCase();
                     const encoded = encodeURIComponent(`${file}.${ext}`);
 
-                    fetch(`https://cdn.jsdelivr.net/gh/RetroStash/rsSINGLEFILE@latest/games/${file}.html`)
-                        .then(res => res.text())
-                        .then(text => {
-                            const newWin = window.open("about:blank", "_blank");
-                            if (newWin) {
-                                newWin.document.open();
-                                newWin.document.write(text);
-                                newWin.document.close();
+                    fetch("https://api.github.com/repos/RetroStash/rsSINGLEFILE/commits")
+  .then(res => res.json())
+  .then(data => {
+    const sha = data[0].sha;
+    return fetch(`https://cdn.jsdelivr.net/gh/RetroStash/rsSINGLEFILE@${sha}/index.html`);
+  })
+  .then(res => res.text())
+  .then(text => {
+    const newWin = window.open("about:blank", "_blank");
+    if (newWin) {
+      newWin.document.open();
+      newWin.document.write(text);
+      newWin.document.close();
                             }
                         });
                 };
