@@ -1,26 +1,25 @@
-<script>
-  window.EJS_player = "#game";
-                window.EJS_gameName = parts.shift();
-                window.EJS_biosUrl = "";
-                window.EJS_gameUrl = cdn.jsdelivr.net/gh/RetroStash/rsSINGLEFILE@latest/roms/SMB1.nes;
-                window.EJS_core = core;
-                window.EJS_pathtodata = "cdn.emulatorjs.org/latest/data/";
-                window.EJS_startOnLoaded = true;
-                window.EJS_DEBUG_XX = enableDebug;
-                window.EJS_disableDatabases = true;
-                window.EJS_threads = enableThreads;
-                if (browserMode) {
-                    window.EJS_browserMode = browserMode;
-                }
-
-                script.src = "cdn.emulatorjs.org/latest/data/loader.js";
-                document.body.appendChild(script);
+<html>
+    <head>
+        <style>
+            body, html {
+                margin: 0;
+                padding: 0;
             }
-            
-            input.onchange = async () => {
-                run(true);
-            }
-            
-            box.ondragover = () => box.setAttribute("drag", true);
-            box.ondragleave = () => box.removeAttribute("drag");
+        </style>
+    </head>
+    <body>
+        <div style="width:100%;height:100%;max-width:100%">
+            <div id="game"></div>
+        </div>
+        <script>
+            EJS_gameName = "Super Mario Bros. 1";
+            EJS_gameUrl = cdn.jsdelivr.net/gh/RetroStash/rsSINGLEFILE@latest/roms/SMB1.nes;
+            EJS_player = "#game";
+            EJS_core = "nes";
+            EJS_color = "#0064ff";
+            EJS_startOnLoaded = true;
+            EJS_pathtodata = "https://cdn.emulatorjs.org/stable/data/";
         </script>
+        <script src="https://cdn.emulatorjs.org/stable/data/loader.js"></script>
+    </body>
+</html>
