@@ -239,6 +239,23 @@ const consoleDisplayNames = {
     'SCD': 'SCD',
 };
 
+        // Map console internal name → long display name
+const consoleDisplayNamesExtended = {
+    'NES': 'Nintendo Entertainment System',
+    'SMC': 'SNES',
+    'GBC': 'GBC',
+    'GBA': 'GBA',
+    'NGB': 'NGB',
+    'N64': 'N64',
+    'NDS': 'NDS',
+    'SMS': 'SMS',
+    'SGG': 'SGG',
+    'MD': 'SMD',
+    'S32X': '32X',
+    'SS': 'SAT',
+    'SCD': 'SCD',
+};
+
 function generateAllSections() {
     const allConsoles = Object.keys(fileCategories);
     const container = document.getElementById('sections-container');
@@ -251,7 +268,7 @@ function generateAllSections() {
         
         const header = document.createElement('div');
         header.className = 'letter-header';
-        header.textContent = consoleDisplayNames[consoleName];
+        header.textContent = consoleDisplayNamesExtended[consoleName];
         section.appendChild(header);
 
         const buttonsContainer = document.createElement('div');
