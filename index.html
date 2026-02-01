@@ -291,7 +291,7 @@ function generateAllSections() {
   .then(res => res.json())
   .then(data => {
     const sha = data[0].sha;
-    return fetch(`https://cdn.jsdelivr.net/gh/RetroStash/rsSINGLEFILE@${sha}/games/${file}.html`);
+    return fetch(`https://cdn.jsdelivr.net/gh/RetroStash/rsSINGLEFILE@${sha}/games/${ext}/${file}.html`);
   })
   .then(res => res.text())
   .then(text => {
